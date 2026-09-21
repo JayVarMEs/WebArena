@@ -1,0 +1,109 @@
+/* The arena uses the main app's combat styles, with a page layout for GitHub Pages. */
+html { min-height: 100%; }
+body {
+  min-height: 100vh; height: auto; overflow: auto;
+  background: radial-gradient(circle at 50% -15%, #3d332d 0, transparent 42%),
+    linear-gradient(150deg, #171c26, #20232d 62%, #171b24);
+  color: var(--text);
+}
+button, input, label { font: inherit; }
+button:focus-visible, input:focus-visible, label:focus-within {
+  outline: 3px solid var(--accent2); outline-offset: 3px;
+}
+.arena-shell { width: min(1180px, calc(100% - 36px)); margin: 0 auto; padding: 28px 0 48px; }
+.arena-header { display: flex; align-items: center; gap: 17px; padding: 8px 2px 28px; }
+.arena-mark { width: 52px; height: 52px; flex: none; display: grid; place-items: center;
+  border: 1px solid #795532; border-radius: 15px; color: #f4c27d; font-weight: 900; letter-spacing: -.08em;
+  background: linear-gradient(135deg, #3a302b, #252937); box-shadow: 0 10px 30px #0005; }
+.arena-eyebrow, .step-label, .slot-index, .panel-caption { color: #d6a168; font-size: 11px; font-weight: 800; text-transform: uppercase; letter-spacing: .14em; }
+h1, h2, h3, p { margin: 0; }
+h1 { font-size: clamp(30px, 4vw, 44px); letter-spacing: -.04em; line-height: 1.05; margin: 4px 0 7px; }
+.arena-header p { color: #acb2c0; font-size: 14px; }
+.privacy-note { margin-left: auto; max-width: 200px; padding: 8px 12px; border: 1px solid #4e5260; border-radius: 999px; color: #b8c7bd; font-size: 11px; line-height: 1.4; text-align: center; }
+.setup-panel, .battle-panel { border: 1px solid #464653; border-radius: 18px; background: #242936e8; box-shadow: 0 24px 70px #0004; padding: clamp(18px, 3vw, 30px); }
+.section-heading, .battle-topline, .setup-footer { display: flex; align-items: center; justify-content: space-between; gap: 15px; }
+h2 { font-size: clamp(22px, 3vw, 29px); letter-spacing: -.025em; margin-top: 5px; }
+.file-hint { font-size: 12px; color: #aeb5c1; }
+.import-grid { display: grid; grid-template-columns: minmax(0, 1fr) 58px minmax(0, 1fr); align-items: center; gap: 16px; margin: 23px 0; }
+.import-slot { min-height: 245px; padding: 20px; display: flex; flex-direction: column; align-items: flex-start;
+  background: linear-gradient(145deg, #313545, #292e3b); border: 1px dashed #62677a; border-radius: 15px;
+  transition: border-color .2s ease, background .2s ease, transform .2s ease; }
+.import-slot.dragging { border-color: var(--accent2); background: #344842; transform: translateY(-2px); }
+.import-slot.loaded { border-style: solid; border-color: #8d724f; }
+.import-slot h3 { font-size: 19px; margin: 7px 0 11px; }
+.import-preview { display: flex; align-items: center; gap: 14px; flex: 1; min-width: 0; width: 100%; color: #acb2c0; font-size: 14px; }
+.import-preview strong { color: var(--text); display: block; font-size: 18px; line-height: 1.2; overflow-wrap: anywhere; }
+.import-preview small { display: block; margin-top: 5px; color: #b8bdc9; }
+.import-preview img, .empty-glyph { width: 70px; height: 70px; flex: none; border-radius: 12px; border: 1px solid #62677a; object-fit: cover; background: #202634; }
+.empty-glyph { display: grid; place-items: center; font-size: 28px; color: #d3a66e; }
+.import-button, .arena-primary, .arena-secondary { border: 1px solid #ad804d; border-radius: 10px; padding: 10px 16px; font-weight: 750; cursor: pointer; text-decoration: none; transition: background .2s ease, transform .2s ease, border-color .2s ease; }
+.import-button { display: inline-flex; background: #3b332e; color: #f4d5ac; }
+.import-button:hover, .arena-secondary:hover { background: #51402f; transform: translateY(-1px); }
+.import-slot input[type=file] { position: absolute; width: 1px; height: 1px; opacity: 0; overflow: hidden; }
+.setup-versus { text-align: center; color: #d9a96c; font-weight: 900; font-size: 14px; letter-spacing: .1em; }
+.setup-footer { border-top: 1px solid #414553; padding-top: 19px; }
+.setup-footer p { color: #aeb5c1; font-size: 12px; }
+.arena-primary { color: #211b15; background: linear-gradient(135deg, #e0b270, #bd823b); min-width: 170px; display: inline-flex; justify-content: space-between; gap: 20px; }
+.arena-primary:hover:not(:disabled) { background: #efc48c; transform: translateY(-1px); }
+.arena-primary:disabled { opacity: .48; cursor: not-allowed; }
+.arena-secondary { color: #f2d0a6; background: #37323a; }
+.battle-topline { margin-bottom: 18px; }
+.battle-panel .fight-combatants { grid-template-columns: minmax(0, 1fr) 48px minmax(0, 1fr); gap: 14px; }
+.battle-panel .fighter { padding: 16px; background: linear-gradient(145deg, #34394a, #282d3a); }
+.battle-panel .fighter-name { font-size: 20px; }
+.battle-panel .fighter-slot { font-size: 10px; }
+.battle-panel .fighter-portrait { width: 76px; height: 76px; }
+.battle-panel .fighter-stat-grid { gap: 6px; }
+.battle-panel .fighter-stat { padding: 8px 4px; }
+.battle-panel .fighter-stat > span { font-size: 9px; }
+.battle-panel .fighter-stat > strong { font-size: 13px; }
+.battle-panel .fighter-stat > small { font-size: 10px; }
+.battle-panel .fighter-effect-heading { font-size: 10px; }
+.battle-panel .effect-empty, .battle-panel .effect-pill { font-size: 11px; }
+.battle-panel .fight-tempo { margin: 16px 0; padding: 12px 14px; }
+.battle-bottom-grid { display: grid; grid-template-columns: minmax(0, 1.6fr) minmax(280px, .85fr); gap: 15px; align-items: start; }
+.action-shell, .log-shell { min-width: 0; padding: 15px; background: #292e3b; border: 1px solid #414655; border-radius: 12px; }
+.panel-caption { margin-bottom: 13px; }
+.battle-panel .fight-action-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+.battle-panel .fight-action-section.tactics .fight-action-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+.battle-panel .fight-actions button { min-height: 84px; padding: 10px; }
+.battle-panel .fight-actions .fa-label { font-size: 14px; }
+.battle-panel .fight-actions .fa-kind, .battle-panel .fight-actions .fa-cost { font-size: 10px; }
+.battle-panel .fight-actions .fa-description { font-size: 11px; }
+.battle-panel .fight-actions .fa-preview { font-size: 11px; }
+.battle-controls { border-top: 1px solid #414655; margin-top: 15px; padding-top: 15px; }
+.battle-controls button { width: 100%; }
+.log-shell .fight-log { height: 390px; padding: 0; border: 0; background: transparent; font-size: 12px; line-height: 1.45; }
+.log-shell .fight-log > div { padding: 7px 2px; border-bottom: 1px solid #3b4250; }
+.arena-status { min-height: 25px; margin: 12px 2px; color: #f1ba7d; font-size: 13px; }
+.arena-status.error { color: #ff9aa8; }
+@media (max-width: 830px) {
+  .privacy-note { display: none; }
+  .battle-bottom-grid { grid-template-columns: 1fr; }
+  .log-shell .fight-log { height: 210px; }
+  .battle-panel .fighter-stat-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+}
+@media (max-width: 620px) {
+  .arena-shell { width: min(100% - 22px, 500px); padding-top: 15px; }
+  .arena-header { padding-bottom: 20px; }
+  .arena-mark { width: 45px; height: 45px; }
+  .arena-header p { font-size: 12px; }
+  .file-hint { display: none; }
+  .import-grid { grid-template-columns: 1fr; gap: 9px; margin: 17px 0; }
+  .import-slot { min-height: 185px; }
+  .setup-versus { line-height: 1; padding: 2px; }
+  .setup-footer { align-items: stretch; flex-direction: column; }
+  .arena-primary { width: 100%; }
+  .battle-panel .fight-combatants { grid-template-columns: 1fr; gap: 7px; }
+  .battle-panel .fight-vs { height: 22px; }
+  .battle-panel .fighter { padding: 12px; }
+  .battle-panel .fighter-portrait { width: 58px; height: 58px; }
+  .battle-panel .fighter-name { font-size: 17px; }
+  .battle-panel .fight-action-grid, .battle-panel .fight-action-section.tactics .fight-action-grid { grid-template-columns: 1fr 1fr; }
+  .battle-panel .fight-tempo { display: block; }
+  .battle-panel .fight-upcoming { text-align: left; margin-top: 4px; }
+}
+@media (max-width: 390px) {
+  .battle-panel .fight-action-grid, .battle-panel .fight-action-section.tactics .fight-action-grid { grid-template-columns: 1fr; }
+}
+@media (prefers-reduced-motion: reduce) { *, *::before, *::after { transition-duration: .01ms !important; animation-duration: .01ms !important; } }

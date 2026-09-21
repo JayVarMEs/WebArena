@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#171c26">
+  <link rel="icon" href="data:,">
+  <title>Character Vault · Battle Arena</title>
+  <link rel="stylesheet" href="../static/style.css">
+  <link rel="stylesheet" href="./arena.css">
+</head>
+<body>
+  <main class="arena-shell">
+    <header class="arena-header">
+      <div class="arena-mark" aria-hidden="true">CV</div>
+      <div>
+        <div class="arena-eyebrow">Character Vault / Battle sandbox</div>
+        <h1>Battle Arena</h1>
+        <p>Import two Character Vault files and settle the fight turn by turn.</p>
+      </div>
+      <div class="privacy-note">Files stay in this browser · fights are never saved</div>
+    </header>
+
+    <section class="setup-panel" id="fightSetup" aria-labelledby="setupTitle">
+      <div class="section-heading">
+        <div>
+          <span class="step-label">01 / Prepare</span>
+          <h2 id="setupTitle">Choose your fighters</h2>
+        </div>
+        <span class="file-hint">Export .charv from the main app</span>
+      </div>
+      <div class="import-grid">
+        <section class="import-slot" id="importSlotA" aria-labelledby="slotTitleA">
+          <span class="slot-index">Fighter 01</span>
+          <h3 id="slotTitleA">Character A</h3>
+          <div class="import-preview" id="previewA"><span class="empty-glyph" aria-hidden="true">+</span><span>Waiting for a character</span></div>
+          <label class="import-button" for="fileA">Import .charv file</label>
+          <input id="fileA" type="file" accept=".charv,.zip" aria-label="Import Character A file">
+        </section>
+        <div class="setup-versus" aria-hidden="true">VS</div>
+        <section class="import-slot" id="importSlotB" aria-labelledby="slotTitleB">
+          <span class="slot-index">Fighter 02</span>
+          <h3 id="slotTitleB">Character B</h3>
+          <div class="import-preview" id="previewB"><span class="empty-glyph" aria-hidden="true">+</span><span>Waiting for a character</span></div>
+          <label class="import-button" for="fileB">Import .charv file</label>
+          <input id="fileB" type="file" accept=".charv,.zip" aria-label="Import Character B file">
+        </section>
+      </div>
+      <div class="setup-footer">
+        <p>Drag a file onto either fighter card, or use its import button.</p>
+        <button class="arena-primary" id="fightStartBtn" type="button" disabled>Start battle <span aria-hidden="true">→</span></button>
+      </div>
+    </section>
+
+    <section class="battle-panel" id="fightArena" aria-label="Battle arena" hidden>
+      <div class="battle-topline">
+        <div><span class="step-label">02 / Combat</span><h2>Live battle</h2></div>
+        <button class="arena-secondary" id="fightResetBtn" type="button">New battle</button>
+      </div>
+      <div class="fight-combatants" id="fightCombatants"></div>
+      <div class="fight-tempo">
+        <div class="fight-turn" id="fightTurnIndicator"></div>
+        <div class="fight-upcoming" id="fightUpcoming"></div>
+      </div>
+      <div class="battle-bottom-grid">
+        <div class="action-shell">
+          <div class="panel-caption">Your move</div>
+          <div class="fight-actions" id="fightActionPanel" hidden></div>
+          <div class="battle-controls"><button class="arena-secondary" id="fightAutoBtn" type="button">Auto-Battle</button></div>
+        </div>
+        <section class="log-shell" aria-labelledby="logTitle">
+          <div class="panel-caption" id="logTitle">Battle log</div>
+          <div class="fight-log" id="fightLog" role="log" aria-live="polite" aria-relevant="additions"></div>
+        </section>
+      </div>
+    </section>
+    <p class="arena-status" id="arenaStatus" role="status" aria-live="polite"></p>
+  </main>
+  <script src="./vendor/jszip.min.js"></script>
+  <script src="./charv.js"></script>
+  <script src="../static/js/fight.js"></script>
+  <script src="./arena.js"></script>
+</body>
+</html>
