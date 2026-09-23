@@ -65,7 +65,7 @@ h1, h2, h3, p { margin: 0; }
 .brand-copy strong { font-size: 13px; letter-spacing: .02em; }
 .brand-copy small { color: var(--muted); font-size: 10px; letter-spacing: .08em; text-transform: uppercase; }
 .arena-intro { max-width: 650px; }
-.arena-eyebrow, .step-label, .slot-index { color: var(--blue); font-size: 10px; font-weight: 700; letter-spacing: .11em; text-transform: uppercase; }
+.arena-eyebrow, .step-label { color: var(--blue); font-size: 10px; font-weight: 700; letter-spacing: .11em; text-transform: uppercase; }
 .arena-eyebrow span { display: inline-grid; width: 27px; height: 22px; margin-right: 8px; place-items: center; border-radius: 7px; color: var(--blue); background: var(--blue-soft); }
 h1 { margin-top: 12px; font-size: clamp(38px, 4.7vw, 62px); font-weight: 650; line-height: .98; letter-spacing: -.055em; }
 h1 em { color: var(--blue); font-style: normal; font-weight: 650; }
@@ -88,9 +88,6 @@ h2 { margin-top: 6px; font-size: clamp(27px, 3vw, 36px); font-weight: 650; line-
 .import-slot.dragging { border-color: var(--blue); transform: translateY(-3px); box-shadow: 0 12px 30px rgb(0 113 227 / .1); }
 .import-slot.loaded { border-color: #8bc1fa; box-shadow: 0 10px 30px rgb(0 113 227 / .08); }
 .import-slot:last-child.loaded { border-color: #efbd87; box-shadow: 0 10px 30px rgb(180 95 6 / .08); }
-.slot-heading { width: 100%; display: flex; align-items: center; justify-content: space-between; gap: 12px; }
-.import-slot:last-child .slot-index { color: var(--orange); }
-.slot-code { padding: 3px 7px; border-radius: 999px; color: var(--muted); background: #ececf0; font: 9px var(--mono); }
 .import-slot h3 { margin: 8px 0 14px; font-size: 22px; font-weight: 650; letter-spacing: -.025em; }
 .import-preview { width: 100%; min-width: 0; flex: 1; display: flex; align-items: center; gap: 16px; color: var(--muted); font-size: 13px; cursor: pointer; border-radius: 18px; }
 .import-preview:hover .empty-glyph { color: #fff; background: var(--blue); transform: translateY(-2px); box-shadow: 0 9px 24px rgb(0 113 227 / .2); }
