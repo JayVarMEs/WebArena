@@ -18,4 +18,4 @@ Open `http://localhost:8000/arena/`.
 
 The included workflow runs the import test and deploys only `index.html`, `arena/`, and `static/`. In repository settings, select **Pages → Build and deployment → GitHub Actions**.
 
-To update combat after changing the main app, copy its latest `static/js/fight.js` and `static/style.css` into this repository, run `node tests/test_arena.js`, and push. The browser ZIP reader is JSZip 3.10.1; its license is at `arena/vendor/LICENSE.markdown`.
+To update combat after changing the main app, copy its latest `static/js/fight.js` into this repository, run `node tests/test_arena.js`, and push. The arena keeps its own visual system in `arena/arena.css`. The browser ZIP reader is JSZip 3.10.1; its license is at `arena/vendor/LICENSE.markdown`.
