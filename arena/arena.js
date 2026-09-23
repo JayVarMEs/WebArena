@@ -37,22 +37,35 @@ function fighterCard(slot) {
     <div class="fighter-identity">
       <div class="fighter-portrait"><img alt="" hidden><span class="fighter-portrait-fallback" aria-hidden="true"></span></div>
       <div class="fighter-heading"><span class="fighter-slot">Character ${slot}</span><div class="fighter-name"></div></div>
-      <span class="fighter-state-badge">Ready</span>
+      <div class="fighter-state-controls">
+        <span class="fighter-state-badge">Ready</span>
+        <button class="fighter-details-toggle" type="button" aria-expanded="false">View stats</button>
+      </div>
     </div>
     <div class="bar hp"><div class="bar-fill"></div><span class="bar-label"></span></div>
     <div class="bar mana"><div class="bar-fill"></div><span class="bar-label"></span></div>
-    <div class="fighter-stat-grid">${stats.map(([key, label]) =>
-      `<div class="fighter-stat" data-fight-stat="${key}"><span>${label}</span><strong></strong><small></small></div>`).join("")}</div>
-    <div class="fighter-effect-groups">${[
-      ["positive", "Buffs"], ["negative", "Debuffs"], ["cooldown", "Cooldowns"],
-    ].map(([kind, label]) => `<section class="fighter-effect-group ${kind === "cooldown" ? "cooldowns" : kind}">
-      <div class="fighter-effect-heading"><span>${label}</span><b>0</b></div>
-      <div class="fighter-effects" data-effect-kind="${kind}"></div>
-    </section>`).join("")}</div>
+    <div class="fighter-details">
+      <div class="fighter-stat-grid">${stats.map(([key, label]) =>
+        `<div class="fighter-stat" data-fight-stat="${key}"><span>${label}</span><strong></strong><small></small></div>`).join("")}</div>
+      <div class="fighter-effect-groups">${[
+        ["positive", "Buffs"], ["negative", "Debuffs"], ["cooldown", "Cooldowns"],
+      ].map(([kind, label]) => `<section class="fighter-effect-group ${kind === "cooldown" ? "cooldowns" : kind}">
+        <div class="fighter-effect-heading"><span>${label}</span><b>0</b></div>
+        <div class="fighter-effects" data-effect-kind="${kind}"></div>
+      </section>`).join("")}</div>
+    </div>
   </article>`;
 }
 
 $("fightCombatants").innerHTML = `${fighterCard("A")}<div class="fight-vs" aria-hidden="true"><span>VS</span></div>${fighterCard("B")}`;
+for (const button of document.querySelectorAll(".fighter-details-toggle")) {
+  button.addEventListener("click", () => {
+    const card = button.closest(".fighter");
+    const expanded = card.classList.toggle("details-open");
+    button.setAttribute("aria-expanded", String(expanded));
+    button.textContent = expanded ? "Hide stats" : "View stats";
+  });
+}
 
 function setStatus(message, error = false) {
   const box = $("arenaStatus");
@@ -174,6 +187,12 @@ $("fightStartBtn").addEventListener("click", () => {
     over: false, autoMode: false, actor: null, defender: null,
   };
   $("fightLog").replaceChildren();
+  for (const card of document.querySelectorAll(".fighter")) {
+    card.classList.remove("details-open");
+    const toggle = card.querySelector(".fighter-details-toggle");
+    toggle.setAttribute("aria-expanded", "false");
+    toggle.textContent = "View stats";
+  }
   $("fightSetup").hidden = true;
   $("fightArena").hidden = false;
   document.body.classList.add("battle-active");
