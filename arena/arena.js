@@ -36,7 +36,7 @@ function fighterCard(slot) {
   return `<article class="fighter" id="fighter${slot}">
     <div class="fighter-identity">
       <div class="fighter-portrait"><img alt="" hidden><span class="fighter-portrait-fallback" aria-hidden="true"></span></div>
-      <div class="fighter-heading"><span class="fighter-slot">Combatant ${slot === "A" ? "Alpha" : "Bravo"}</span><div class="fighter-name"></div></div>
+      <div class="fighter-heading"><span class="fighter-slot">Character ${slot}</span><div class="fighter-name"></div></div>
       <span class="fighter-state-badge">Ready</span>
     </div>
     <div class="bar hp"><div class="bar-fill"></div><span class="bar-label"></span></div>

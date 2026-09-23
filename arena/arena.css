@@ -92,10 +92,12 @@ h2 { margin-top: 6px; font-size: clamp(27px, 3vw, 36px); font-weight: 650; line-
 .import-slot:last-child .slot-index { color: var(--orange); }
 .slot-code { padding: 3px 7px; border-radius: 999px; color: var(--muted); background: #ececf0; font: 9px var(--mono); }
 .import-slot h3 { margin: 8px 0 14px; font-size: 22px; font-weight: 650; letter-spacing: -.025em; }
-.import-preview { width: 100%; min-width: 0; flex: 1; display: flex; align-items: center; gap: 16px; color: var(--muted); font-size: 13px; }
+.import-preview { width: 100%; min-width: 0; flex: 1; display: flex; align-items: center; gap: 16px; color: var(--muted); font-size: 13px; cursor: pointer; border-radius: 18px; }
+.import-preview:hover .empty-glyph { color: #fff; background: var(--blue); transform: translateY(-2px); box-shadow: 0 9px 24px rgb(0 113 227 / .2); }
+.import-slot:last-child .import-preview:hover .empty-glyph { color: #fff; background: var(--orange); box-shadow: 0 9px 24px rgb(180 95 6 / .18); }
 .import-preview strong { display: block; color: var(--text); font-size: 21px; font-weight: 650; line-height: 1.1; letter-spacing: -.02em; overflow-wrap: anywhere; }
 .import-preview small { display: block; margin-top: 6px; color: var(--muted); font-size: 10px; text-transform: uppercase; letter-spacing: .04em; }
-.import-preview img, .empty-glyph { width: 76px; height: 88px; flex: none; border-radius: 18px; border: 1px solid var(--line); object-fit: cover; background: #fff; box-shadow: 0 6px 20px rgb(0 0 0 / .07); }
+.import-preview img, .empty-glyph { width: 76px; height: 88px; flex: none; border-radius: 18px; border: 1px solid var(--line); object-fit: cover; background: #fff; box-shadow: 0 6px 20px rgb(0 0 0 / .07); transition: color .18s ease, background .18s ease, transform .18s ease, box-shadow .18s ease; }
 .empty-glyph { display: grid; place-items: center; color: var(--blue); font-size: 28px; font-weight: 300; }
 .import-slot:last-child .empty-glyph { color: var(--orange); }
 .import-button, .arena-primary, .arena-secondary { border: 0; border-radius: 999px; cursor: pointer; transition: background .18s ease, transform .18s ease, box-shadow .18s ease; }
