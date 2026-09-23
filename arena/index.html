@@ -61,12 +61,19 @@
     <section class="battle-panel" id="fightArena" aria-label="Battle arena" hidden>
       <div class="battle-topline">
         <div><span class="step-label">Active encounter</span><h2>Arena floor</h2></div>
-        <button class="arena-secondary" id="fightResetBtn" type="button">End session</button>
+        <div class="battle-heading-actions">
+          <span class="match-mode"><i aria-hidden="true"></i> Turn-based match</span>
+          <button class="arena-secondary" id="fightResetBtn" type="button">End session</button>
+        </div>
       </div>
-      <div class="fight-combatants" id="fightCombatants"></div>
-      <div class="fight-tempo">
-        <div class="fight-turn" id="fightTurnIndicator"></div>
-        <div class="fight-upcoming" id="fightUpcoming"></div>
+      <div class="battle-stage">
+        <div class="stage-orb stage-orb-left" aria-hidden="true"></div>
+        <div class="stage-orb stage-orb-right" aria-hidden="true"></div>
+        <div class="fight-combatants" id="fightCombatants"></div>
+        <div class="fight-tempo">
+          <div class="fight-turn" id="fightTurnIndicator"></div>
+          <div class="fight-upcoming" id="fightUpcoming"></div>
+        </div>
       </div>
       <div class="battle-bottom-grid">
         <div class="action-shell">

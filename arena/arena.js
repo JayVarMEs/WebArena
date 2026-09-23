@@ -176,10 +176,12 @@ $("fightStartBtn").addEventListener("click", () => {
   $("fightLog").replaceChildren();
   $("fightSetup").hidden = true;
   $("fightArena").hidden = false;
+  document.body.classList.add("battle-active");
   renderFightState();
   fightLog("The fight begins!");
   beginTurn();
   setStatus("");
+  requestAnimationFrame(() => window.scrollTo({ top: 0, behavior: "auto" }));
 });
 
 $("fightAutoBtn").addEventListener("click", () => {
@@ -194,6 +196,7 @@ $("fightResetBtn").addEventListener("click", () => {
   renderUpcoming();
   $("fightArena").hidden = true;
   $("fightSetup").hidden = false;
+  document.body.classList.remove("battle-active");
   setStatus("Choose different files or start a rematch.");
   window.scrollTo({ top: 0, behavior: window.matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth" });
 });
